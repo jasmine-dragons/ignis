@@ -9,8 +9,11 @@
   line-height: 2rem;
   font-weight: 500;
 
-  // .navbarLeft {
-  // }
+  .navbarLeft {
+    margin: 0;
+    padding: 0;
+    height: 2rem;
+  }
   .navbarRight {
     display: flex;
     gap: 2rem;
