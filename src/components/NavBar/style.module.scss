@@ -1,7 +1,8 @@
 .navbar {
   position: relative;
   width: 100vw;
-  height: 4rem;
+  height: 4.25rem;
+  outline: 1px solid #e0e0e0;
   display: flex;
   padding: 1rem 3rem;
   justify-content: space-between;
@@ -20,18 +21,4 @@
     justify-content: center;
     align-items: center;
   }
-}
-
-.rainbow {
-  height: 4px;
-  width: 100%;
-  background: linear-gradient(
-    270deg,
-    #ff6f6f,
-    #f9a857 18.75%,
-    #80ce1c 36.98%,
-    #51c0c0 55.73%,
-    #62b0ff 75%,
-    #816dff
-  );
 }

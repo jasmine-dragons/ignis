@@ -1,6 +1,7 @@
-import ReactMapGL, { NavigationControl, GeolocateControl, Layer } from 'react-map-gl';
+import ReactMapGL, { Layer } from 'react-map-gl';
 import { config } from '../../lib/config';
 import { locations } from '../../lib/constants';
+import ControlLayer from '../ControlLayer';
 
 const MapWrapper = () => {
   const style = 'mapbox://styles/acmhacks/cl99a828b006m14pdvvisfm7w';
@@ -17,8 +18,7 @@ const MapWrapper = () => {
         mapboxAccessToken={config.MAPBOX_TOKEN}
         mapStyle={style}
       >
-        <NavigationControl position="bottom-right" />
-        <GeolocateControl position="bottom-right" trackUserLocation />
+        <ControlLayer />
         <Layer type="custom" renderingMode="3d" />
       </ReactMapGL>
     </div>
