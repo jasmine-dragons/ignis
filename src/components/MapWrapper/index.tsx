@@ -1,13 +1,20 @@
 import { config } from '@/lib/config';
 import { locations } from '@/lib/constants';
 import { memo } from 'react';
-import Map, { Layer } from 'react-map-gl';
-import MarkerWrapper from '../MarkerWrapper';
+import ReactMapGL from 'react-map-gl';
 
 const MapWrapper = () => {
-  const { latitude, longitude } = locations.LA_JOLLA;
+  // const { latitude, longitude } = locations.LA_JOLLA;
+  // const render = () => {
+  //   return;
+  // };
+
+  // const onAdd = () => {
+  //   return;
+  // };
+
   return (
-    <Map
+    <ReactMapGL
       initialViewState={{
         zoom: 10,
         ...locations.LA_JOLLA,
@@ -17,9 +24,14 @@ const MapWrapper = () => {
       mapboxAccessToken={config.MAPBOX_TOKEN}
       mapStyle="mapbox://styles/acmhacks/cl99a828b006m14pdvvisfm7w"
     >
-      {/* <Layer /> */}
-      <MarkerWrapper latitude={latitude} longitude={longitude} />
-    </Map>
+      {/* <Layer type="custom" renderingMode="3d" render={render} onAdd={onAdd} /> */}
+      {/* <MarkerWrapper latitude={latitude} longitude={longitude} /> */}
+      {/* <GeolocateControl
+        trackUserLocation
+        positionOptions={{ enableHighAccuracy: true }}
+        style={{ top: 20, right: 20 }}
+      /> */}
+    </ReactMapGL>
   );
 };
 
