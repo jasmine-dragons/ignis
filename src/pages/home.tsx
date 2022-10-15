@@ -1,13 +1,8 @@
-import MonthSlider from "@/components/MonthSlider";
-import { MONTHS } from "@/lib/constants";
+import MapWrapper from "@/components/MapWrapper";
 import { NextPage } from "next";
 
 const HomePage: NextPage = () => {
-  return (
-    <div>
-      <MonthSlider defaultMonth={MONTHS.January} />
-    </div>
-  );
+  return <MapWrapper />;
 };
 
 export default HomePage;
