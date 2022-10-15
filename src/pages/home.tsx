@@ -1,8 +1,13 @@
 import MapWrapper from '@/components/MapWrapper';
-import { NextPage } from 'next';
+import type { NextPage } from 'next';
+import style from '@/styles/pages/Home.module.scss';
 
 const HomePage: NextPage = () => {
-  return <MapWrapper />;
+  return (
+    <div className={style.container}>
+      <MapWrapper />
+    </div>
+  );
 };
 
 export default HomePage;

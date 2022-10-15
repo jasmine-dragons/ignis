@@ -1,11 +1,15 @@
 import type { AppProps } from 'next/app';
-import '@/styles/reset.scss';
 import '@/styles/globals.scss';
+import '@/styles/reset.scss';
+import Navbar from '@/components/NavBar';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <main>
-      <Component {...pageProps} />
-    </main>
+    <>
+      <Navbar />
+      <main>
+        <Component {...pageProps} />
+      </main>
+    </>
   );
 }
