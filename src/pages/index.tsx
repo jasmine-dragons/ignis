@@ -1,4 +1,4 @@
-import type { NextPage } from "next";
+import type { NextPage } from 'next';
 
 const LandingPage: NextPage = () => {
   return <div>Landing</div>;
