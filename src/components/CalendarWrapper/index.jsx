@@ -1,10 +1,11 @@
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import styles from './style.module.scss';
 
 const CalendarWrapper = () => {
     return (
         <>
-            <Calendar/>
+            <Calendar className={styles.calendar}/>
         </>
     )
 }

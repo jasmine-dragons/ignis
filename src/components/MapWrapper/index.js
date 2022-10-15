@@ -14,7 +14,7 @@ const MapWrapper = () => {
           zoom: 10,
           ...locations.LA_JOLLA,
         }}
-        style={{ width: "100vw", height: "calc(100vh - 4rem - 4px)" }}
+        style={{ width: "100vw", height: "calc(100vh - 4.25rem)" }}
         projection="globe"
         mapboxAccessToken={config.MAPBOX_TOKEN}
         mapStyle={style}
