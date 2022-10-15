@@ -9,10 +9,7 @@ export default function MyApp({ Component, pageProps }) {
       <Head>
         <title>Ignis</title>
       </Head>
-      <Navbar />
-      <main>
-        <Component {...pageProps} />
-      </main>
+      <Component {...pageProps} />
     </>
   );
 }

@@ -1,11 +1,17 @@
 import MapWrapper from '../components/MapWrapper';
+import Navbar from '../components/Navbar';
 import style from '../styles/pages/Home.module.scss';
 
 const HomePage = () => {
   return (
-    <div className={style.container}>
-      <MapWrapper />
-    </div>
+    <>
+      <Navbar />
+      <main>
+        <div className={style.container}>
+          <MapWrapper />
+        </div>
+      </main>
+    </>
   );
 };
 
