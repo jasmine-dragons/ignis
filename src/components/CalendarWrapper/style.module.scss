@@ -1,18 +1,24 @@
 .calendar {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  border: none;
+  //   display: flex;
+  //   flex-direction: column;
+  //   align-items: center;
+  //   justify-content: center;
+  //   width: 100%;
+  //   border: none;
   //   height: 100vh;
   //   padding: 0 20px;
   //   box-sizing: border-box;
 
   .calendarTile {
-    // border-radius: 25rem;
-    // width: 1rem;
-    // height: 1rem;
-    // background: #333;
   }
+}
+
+.container {
+  /* ~~~ container styles ~~~ */
+  max-width: 600px;
+  margin: auto;
+  margin-top: 20px;
+  background-color: #d4f7d4;
+  padding: 10px;
+  border-radius: 3px;
 }
