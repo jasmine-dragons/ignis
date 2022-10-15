@@ -19,7 +19,7 @@ const MapWrapper = () => {
         mapStyle={style}
       >
         <ControlLayer />
-        <Layer type="custom" renderingMode="3d" />
+        {/* <Layer type="custom" renderingMode="3d" /> */}
       </ReactMapGL>
     </div>
   );
