@@ -30,8 +30,9 @@ yarn-error.log*
 
 # vercel
 .vercel
-
 # typescript
 *.tsbuildinfo
 next-env.d.ts
 node_modules
+
+public/data/counties.geojson
