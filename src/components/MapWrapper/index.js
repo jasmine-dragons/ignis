@@ -1,25 +1,31 @@
 import style from './style.module.scss';
-import ReactMapGL from 'react-map-gl';
+import ReactMapGL, { NavigationControl, GeolocateControl, Layer } from 'react-map-gl';
 import { config } from '../../lib/config';
 import { locations } from '../../lib/constants';
 
 const MapWrapper = () => {
-  console.log('map');
+
+  const style = "mapbox://styles/acmhacks/cl99a828b006m14pdvvisfm7w"
+
   return (
     <div className={style.container}>
       <ReactMapGL
-        mapboxAccessToken="pk.eyJ1IjoiYWNtaGFja3MiLCJhIjoiY2w5OTlzN3BnM2ZpazN1bXhkZzl5cnk1ZCJ9.3PHR5hWGMwMUOg2tXsfZ3g"
         initialViewState={{
+          zoom: 10,
           ...locations.LA_JOLLA,
-          zoom: 4,
         }}
-        style={{
-          width: 'max-content',
-        }}
+        style={{ width: "100vw", height: "calc(100vh - 4rem - 4px)" }}
         projection="globe"
-        mapStyle="mapbox://styles/mapbox/streets-v9"
-      ></ReactMapGL>
-    </div>
+        mapboxAccessToken={config.MAPBOX_TOKEN}
+        mapStyle={style}
+      >
+      <NavigationControl />
+      <GeolocateControl trackUserLocation />
+      <Layer 
+        type='custom'
+        renderingMode='3d'/>
+      </ReactMapGL>
+     </div>
   );
 };
 
