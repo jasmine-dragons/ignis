@@ -7,6 +7,7 @@
   justify-content: center;
   align-items: center;
   background-color: rgb(29, 0, 0);
+  color: white;
 }
 
 .landscape {
@@ -24,6 +25,13 @@
     width: 100%;
     height: 10rem;
     background: var(--c10);
+  }
+
+  &__title {
+    text-align: center;
+    font-size: xxx-large;
+    font-weight: bold;
+    color: white;
   }
 
   // positioning for each layer and parallax
