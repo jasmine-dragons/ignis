@@ -292,7 +292,7 @@ const LandingPage = () => {
                 <Link href="/home">Discover the wildfire season in your area.</Link>
               </h2>
               <h2>
-                <Link href="/calendar">Planning a trip? See potential dangers.</Link>
+                <Link href="/home">Planning a trip? See potential dangers.</Link>
               </h2>
             </div>
             <img src={campfire.src} alt="campfire"/>
