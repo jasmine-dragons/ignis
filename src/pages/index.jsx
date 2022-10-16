@@ -1,9 +1,20 @@
 import HeroNavbar from '../components/HeroNavbar';
 import style from '../styles/pages/Landing.module.scss';
 
+import housefire from './images/HouseFire.svg';
+import forestfire from './images/ForestFire.svg';
+import city from './images/City.svg';
+
+import Link from 'next/link';
 import { Parallax, ParallaxProvider } from 'react-scroll-parallax';
+import CountUp from 'react-countup';
+import { useState } from 'react';
 
 const LandingPage = () => {
+  const [wildfiresDone, setWildfiresDone] = useState(false);
+  const [acresBurnedDone, setAcresBurnedDone] = useState(false);
+  const [damagesDone, setDamagesDone] = useState(false);
+
   return (
     <ParallaxProvider>
       {/* <HeroNavbar /> */}
@@ -145,6 +156,11 @@ const LandingPage = () => {
           </div>
         </div>
 
+        {/* Title */}
+        <Parallax speed={-100}>
+          <div className={style.landscape__title}>stay alert. stay alive.</div>
+        </Parallax>
+
         {/* <!-- landscape layer 9 - foreground 2 --> */}
         {/* <div className={style.landscape__layer landscape__layer--9} data-speed="0.8"> */}
         <div className={style.landscape__layer}>
@@ -159,11 +175,6 @@ const LandingPage = () => {
             </Parallax>
           </div>
         </div>
-
-        {/* Title */}
-        <Parallax speed={-100}>
-          <div className={style.landscape__title}>Prepare for fire.</div>
-        </Parallax>
 
         {/* <!-- landscape layer 10 - empty --> */}
         <div className={style.landscape__layer}>
@@ -182,7 +193,71 @@ const LandingPage = () => {
       <HeroNavbar />
       <main>
         <div className={style.container}>
-          <h1>Wildfires can happen anytime, anywhere.</h1>
+          <div className={style.wildfire}>
+            <div className={style.wildfireBg}>
+              <img src={forestfire.src} alt="house fire" />
+              <img src={housefire.src} alt="house fire" />
+              <img src={city.src} alt="house fire" />
+            </div>
+            <h1>Wildfires can happen anytime, anywhere.</h1>
+          </div>
+          <div className={style.landingInfo}>
+            <h1>In just the past year</h1>
+            <div className={style.landingInfoBody}>
+              <li>
+                {wildfiresDone ? (
+                  <span>59k</span>
+                ) : (
+                  <CountUp
+                    start={0}
+                    end={58968}
+                    duration={2}
+                    onEnd={() => setWildfiresDone(true)}
+                  />
+                )}{' '}
+                wildfires
+              </li>
+              <li>
+                {acresBurnedDone ? (
+                  <span>7.1 million</span>
+                ) : (
+                  <CountUp
+                    start={0}
+                    end={7100000}
+                    duration={2}
+                    onEnd={() => setAcresBurnedDone(true)}
+                  />
+                )}{' '}
+                acres burned
+              </li>
+              <li>
+                {' '}
+                {damagesDone ? (
+                  <span>$11.2 billion</span>
+                ) : (
+                  <CountUp
+                    start={0}
+                    end={11200000000}
+                    duration={2}
+                    prefix="$"
+                    onEnd={() => setDamagesDone(true)}
+                  />
+                )}{' '}
+                in damages
+              </li>
+            </div>
+          </div>
+          <div className={style.landingInfo}>
+            <h1>Be prepared.</h1>
+            <div className={style.landingInfoBody}>
+              <h2>
+                <Link href="/home">Discover the wildfire season in your area.</Link>
+              </h2>
+              <h2>
+                <Link href="/calendar">Planning a trip? See potential dangers.</Link>
+              </h2>
+            </div>
+          </div>
         </div>
       </main>
     </ParallaxProvider>

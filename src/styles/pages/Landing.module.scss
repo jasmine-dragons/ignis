@@ -3,11 +3,11 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  gap: 3rem;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   background-color: rgb(29, 0, 0);
   color: white;
+  padding: 10vh 0;
 }
 
 .landscape {
@@ -29,7 +29,7 @@
 
   &__title {
     text-align: center;
-    font-size: xxx-large;
+    font-size: 8rem;
     font-weight: bold;
     color: white;
   }
@@ -63,4 +63,49 @@
       max-width: 100%;
     }
   }
+}
+
+.wildfire {
+  width: 75%;
+  height: 100vh;
+  min-height: 50vh;
+
+  .wildfireBg {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  h1 {
+    padding-top: 32px;
+    font-size: 3rem;
+    text-align: center;
+  }
+}
+
+.landingInfo {
+  padding: 32px 40px;
+  width: 80%;
+  text-align: left;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  li {
+    font-size: 2rem;
+  }
+}
+
+.landingInfoBody {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
