@@ -4,10 +4,14 @@ import style from '../styles/pages/Landing.module.scss';
 import housefire from './images/HouseFire.svg';
 import forestfire from './images/ForestFire.svg';
 import city from './images/City.svg';
+import home from './images/home.svg';
+import fire from './images/el_fire.svg';
+import campfire from './images/campfire.svg';
 
 import Link from 'next/link';
 import { Parallax, ParallaxProvider } from 'react-scroll-parallax';
 import CountUp from 'react-countup';
+import VisibilitySensor from 'react-visibility-sensor';
 import { useState } from 'react';
 
 const LandingPage = () => {
@@ -195,61 +199,95 @@ const LandingPage = () => {
         <div className={style.container}>
           <div className={style.wildfire}>
             <div className={style.wildfireBg}>
-              <img src={forestfire.src} alt="house fire" />
+              <img src={forestfire.src} alt="forest fire" />
               <img src={housefire.src} alt="house fire" />
-              <img src={city.src} alt="house fire" />
+              <img src={city.src} alt="city fire" />
             </div>
             <h1>Wildfires can happen anytime, anywhere.</h1>
           </div>
-          <div className={style.landingInfo}>
-            <h1>In just the past year</h1>
-            <div className={style.landingInfoBody}>
-              <li>
-                {wildfiresDone ? (
-                  <span>59k</span>
-                ) : (
-                  <CountUp
-                    start={0}
-                    end={58968}
-                    duration={2}
-                    onEnd={() => setWildfiresDone(true)}
-                  />
-                )}{' '}
-                wildfires
-              </li>
-              <li>
-                {acresBurnedDone ? (
-                  <span>7.1 million</span>
-                ) : (
-                  <CountUp
-                    start={0}
-                    end={7100000}
-                    duration={2}
-                    onEnd={() => setAcresBurnedDone(true)}
-                  />
-                )}{' '}
-                acres burned
-              </li>
-              <li>
-                {' '}
-                {damagesDone ? (
-                  <span>$11.2 billion</span>
-                ) : (
-                  <CountUp
-                    start={0}
-                    end={11200000000}
-                    duration={2}
-                    prefix="$"
-                    onEnd={() => setDamagesDone(true)}
-                  />
-                )}{' '}
-                in damages
-              </li>
-            </div>
-          </div>
-          <div className={style.landingInfo}>
+          <VisibilitySensor partialVisibility offset={{ bottom: 200 }}>
+            {({ isVisible }) => (
+              <div className={style.stats}>
+                <h1>In just the past year</h1>
+                {isVisible && (
+                  <div className={style.statsBody}>
+                    <li>
+                      {wildfiresDone ? (
+                        <span>59k</span>
+                      ) : (
+                        <CountUp
+                          start={0}
+                          end={58968}
+                          duration={2.5}
+                          onEnd={() => setWildfiresDone(true)}
+                        />
+                      )}{' '}
+                      wildfires
+                    </li>
+                    <li>
+                      {acresBurnedDone ? (
+                        <span>7.1 million</span>
+                      ) : (
+                        <CountUp
+                          start={0}
+                          end={7100000}
+                          duration={2.5}
+                          onEnd={() => setAcresBurnedDone(true)}
+                        />
+                      )}{' '}
+                      acres burned
+                    </li>
+                    <li>
+                      {' '}
+                      {damagesDone ? (
+                        <span>$11.2 billion</span>
+                      ) : (
+                        <CountUp
+                          start={0}
+                          end={11200000000}
+                          duration={2.5}
+                          prefix="$"
+                          onEnd={() => setDamagesDone(true)}
+                        />
+                      )}{' '}
+                      in damages
+                    </li>
+                  </div>
+                )}
+                {isVisible && (
+                  <div className={style.destruction}>
+                    <div className={style.houseOnFire}>
+                      <img className={style.home} src={home.src} alt="home" />
+                      <img className={style.fire} src={fire.src} alt="fire" />
+                    </div>
+                    <div className={style.houseOnFire}>
+                      <img className={style.home} src={home.src} alt="home" />
+                      <img className={style.fire} src={fire.src} alt="fire" />
+                    </div>
+                    <div className={style.houseOnFire}>
+                      <img className={style.home} src={home.src} alt="home" />
+                      <img className={style.fire} src={fire.src} alt="fire" />
+                    </div>
+                    <div className={style.houseOnFire}>
+                      <img className={style.home} src={home.src} alt="home" />
+                      <img className={style.fire} src={fire.src} alt="fire" />
+                    </div>
+                    <div className={style.houseOnFire}>
+                      <img className={style.home} src={home.src} alt="home" />
+                      <img className={style.fire} src={fire.src} alt="fire" />
+                    </div>
+                    <div className={style.houseOnFire}>
+                      <img className={style.home} src={home.src} alt="home" />
+                      <img className={style.fire} src={fire.src} alt="fire" />
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+          </VisibilitySensor>
+          <div className={style.help}>
             <h1>Be prepared.</h1>
-            <div className={style.landingInfoBody}>
+            <div className={style.statsBody}>
               <h2>
                 <Link href="/home">Discover the wildfire season in your area.</Link>
               </h2>
@@ -257,6 +295,7 @@ const LandingPage = () => {
                 <Link href="/calendar">Planning a trip? See potential dangers.</Link>
               </h2>
             </div>
+            <img src={campfire.src} alt="campfire"/>
           </div>
         </div>
       </main>
