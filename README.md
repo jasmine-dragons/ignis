@@ -1,4 +1,4 @@
-# Ignis
+# ignis
 
 ## Inspiration
 In recognition of National Fire Prevention Week, my team decided to tackle the theme of environmental sustainability with a platform to prepare communities for wildfires to reduce the damage and impact of these natural disasters.  As a team from California, one of the states that historically suffers the most from wildfires every Autumn, we have seen firsthand the havoc that wildfires can wreck, on both rural and urban communities alike.
