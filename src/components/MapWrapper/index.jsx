@@ -4,15 +4,12 @@ import { config } from '../../lib/config';
 import { locations } from '../../lib/constants';
 import ControlLayer from '../ControlLayer';
 import bbox from '@turf/bbox';
-import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css';
-import Geocoder from 'react-map-gl-geocoder';
 import BorderStyles, {
   countiesFillLayer,
   highlightFillLayer,
   lineLayer,
   fillLayer,
 } from '../MapStyles/BorderStyles';
-import GeocoderControl from '../GeocoderControl';
 import PopupCard from '../PopupCard';
 
 const MapWrapper = () => {
