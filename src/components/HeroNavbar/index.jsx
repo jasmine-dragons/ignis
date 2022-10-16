@@ -14,7 +14,6 @@ const HeroNavbar = () => (
       </div>
       <nav className={styles.navbarRight}>
         <Link href="/home">Map</Link>
-        <Link href="/calendar">Calendar</Link>
       </nav>
     </div>
     <div className={styles.rainbow} />

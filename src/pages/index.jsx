@@ -174,6 +174,7 @@ const LandingPage = () => {
           </div>
         </div>
       </div>
+      <HeroNavbar />
       <main>
         <div className={style.container}>Landing</div>;
       </main>
