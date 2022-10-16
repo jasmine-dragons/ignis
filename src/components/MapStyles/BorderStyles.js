@@ -34,7 +34,7 @@ export const countiesFillLayer = {
   'source-layer': 'original',
   paint: {
     'fill-outline-color': 'rgba(0,0,0,0.1)',
-    'fill-color': 'rgba(0,0,0,0.03)',
+    'fill-color': 'rgba(0,0,0,0.0)',
   },
 };
 // Highlighted county polygons
