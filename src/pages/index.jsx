@@ -28,7 +28,7 @@ const LandingPage = () => {
         </div>
 
         {/* <!-- landscape layer 2 - mountains 1 --> */}
-        <div className={style.landscape__layer} data-speed="0.08">
+        <div className={style.landscape__layer}>
           <div className={style.landscape__image}>
             <Parallax speed={0} translateY={[-70, 80]}>
               <svg viewBox="0 0 4000 1000" xmlns="http://www.w3.org/2000/svg">
@@ -46,7 +46,7 @@ const LandingPage = () => {
         </div>
 
         {/* <!-- landscape layer 3 - mountains 2 --> */}
-        <div className={style.landscape__layer} data-speed="0.1">
+        <div className={style.landscape__layer}>
           <div className={style.landscape__image}>
             <Parallax speed={0} translateY={[-70, 70]}>
               <svg viewBox="0 0 4000 1000" xmlns="http://www.w3.org/2000/svg">
@@ -64,7 +64,7 @@ const LandingPage = () => {
         </div>
 
         {/* <!-- landscape layer 4 - mountains 3 --> */}
-        <div className={style.landscape__layer} data-speed="0.14">
+        <div className={style.landscape__layer}>
           <div className={style.landscape__image}>
             <Parallax speed={10} translateY={[-60, 60]}>
               <svg viewBox="0 0 4000 1000" xmlns="http://www.w3.org/2000/svg">
@@ -82,7 +82,7 @@ const LandingPage = () => {
         </div>
 
         {/* <!-- landscape layer 5 - valley 1 --> */}
-        <div className={style.landscape__layer} data-speed="0.17">
+        <div className={style.landscape__layer}>
           <div className={style.landscape__image}>
             <Parallax speed={20} translateY={[-50, 50]}>
               <svg viewBox="0 0 4000 1000" xmlns="http://www.w3.org/2000/svg">
@@ -96,7 +96,7 @@ const LandingPage = () => {
         </div>
 
         {/* <!-- landscape layer 6 - valley 2 --> */}
-        <div className={style.landscape__layer} data-speed="0.2">
+        <div className={style.landscape__layer}>
           <div className={style.landscape__image}>
             <Parallax speed={40} translateY={[-40, 40]}>
               <svg viewBox="0 0 4000 1000" xmlns="http://www.w3.org/2000/svg">
@@ -110,7 +110,7 @@ const LandingPage = () => {
         </div>
 
         {/* <!-- landscape layer 7 - loch --> */}
-        <div className={style.landscape__layer} data-speed="0.25">
+        <div className={style.landscape__layer}>
           <div className={style.landscape__image}>
             <Parallax speed={40} translateY={[-40, 50]}>
               <svg viewBox="0 0 4000 1000" xmlns="http://www.w3.org/2000/svg">
@@ -128,7 +128,7 @@ const LandingPage = () => {
         </div>
 
         {/* <!-- landscape layer 8 - foreground 1 --> */}
-        <div className={style.landscape__layer} data-speed="0.6">
+        <div className={style.landscape__layer}>
           <div className={style.landscape__image}>
             <Parallax speed={50} translateY={[-20, 30]}>
               <svg viewBox="0 0 4000 1000" xmlns="http://www.w3.org/2000/svg">
@@ -147,7 +147,7 @@ const LandingPage = () => {
 
         {/* <!-- landscape layer 9 - foreground 2 --> */}
         {/* <div className={style.landscape__layer landscape__layer--9} data-speed="0.8"> */}
-        <div className={style.landscape__layer} data-speed="0.8">
+        <div className={style.landscape__layer}>
           <div className={style.landscape__image}>
             <Parallax translateY={[-10, 10]}>
               <svg viewBox="0 0 4000 1000" xmlns="http://www.w3.org/2000/svg">
@@ -160,8 +160,13 @@ const LandingPage = () => {
           </div>
         </div>
 
+        {/* Title */}
+        <Parallax speed={-100}>
+          <div className={style.landscape__title}>Prepare for fire.</div>
+        </Parallax>
+
         {/* <!-- landscape layer 10 - empty --> */}
-        <div className={style.landscape__layer} data-speed="1" data-lag="0">
+        <div className={style.landscape__layer}>
           <div className={style.landscape__image}>
             <Parallax className={style.solidBg} translateY={[0, 0]}>
               <svg viewBox="0 0 4000 1000" xmlns="http://www.w3.org/2000/svg">
@@ -176,7 +181,9 @@ const LandingPage = () => {
       </div>
       <HeroNavbar />
       <main>
-        <div className={style.container}>Landing</div>
+        <div className={style.container}>
+          <h1>Wildfires can happen anytime, anywhere.</h1>
+        </div>
       </main>
     </ParallaxProvider>
   );
