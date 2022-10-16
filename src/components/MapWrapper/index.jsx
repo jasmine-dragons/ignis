@@ -1,5 +1,5 @@
 import { useRef, useState, useCallback, useMemo } from 'react';
-import ReactMapGL, { Layer, Popup, Source } from 'react-map-gl';
+import ReactMapGL, { Marker, Layer, Popup, Source } from 'react-map-gl';
 import { config } from '../../lib/config';
 import { locations } from '../../lib/constants';
 import ControlLayer from '../ControlLayer';
@@ -11,6 +11,7 @@ import BorderStyles, {
   fillLayer,
 } from '../MapStyles/BorderStyles';
 import PopupCard from '../PopupCard';
+const fipsMap = require('fips-state-codes');
 
 const MapWrapper = () => {
   const mapRef = useRef();
@@ -41,6 +42,7 @@ const MapWrapper = () => {
         countyName: county.properties.COUNTY,
         income: county.properties['median-income'],
         ...county.properties,
+        stateName: fipsMap[county.properties.FIPS.toString().slice(0, 2)],
       });
     } else {
       setHoverInfo(null);
@@ -86,6 +88,9 @@ const MapWrapper = () => {
             <PopupCard info={hoverInfo} />
           </Popup>
         )}
+        <Marker longitude={-100} latitude={40} anchor="bottom">
+          <img src="logo.svg" />
+        </Marker>
       </ReactMapGL>
     </div>
   );

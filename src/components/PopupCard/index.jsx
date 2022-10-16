@@ -33,7 +33,7 @@ const PopupCard = ({ info }) => {
       </div>
       <div className={styles.content}>
         <h1 className={styles.title}>{city}</h1>
-        <h2 className={styles.subtitle}>CA, United States</h2>
+        <h2 className={styles.subtitle}>{info.stateName}, United States</h2>
         <span className={styles.info}>
           <BsPeopleFill size={12} />
           {population && population.toLocaleString('en-US')} people

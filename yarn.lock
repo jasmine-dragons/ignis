@@ -3304,6 +3304,11 @@ find-up@^4.1.0:
     locate-path "^5.0.0"
     path-exists "^4.0.0"
 
+fips-state-codes@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/fips-state-codes/-/fips-state-codes-1.0.1.tgz#1ba21204e4c00575927bd9b239a30eeed31c7560"
+  integrity sha512-OVi5R0MyuhP6KFDJAqcoI22061RHnFezVtP2B16ATrgmT/GrdqLvIw1fy8lfpSC4aBGwwF1UknOh2yjBXhAO1g==
+
 follow-redirects@^1.15.0:
   version "1.15.2"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.2.tgz#b460864144ba63f2681096f274c4e57026da2c13"
