@@ -48,3 +48,5 @@ export const getActiveFires = (long, latitude) => {
     })
     .catch(err => console.error(err));
 };
+
+export const getWeatherData = (long, lat) => {};
