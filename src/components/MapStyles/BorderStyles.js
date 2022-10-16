@@ -40,7 +40,7 @@ export const highlightFillLayer = {
   'source-layer': 'original',
   paint: {
     'fill-outline-color': '#484896',
-    'fill-color': '#6e599f',
+    'fill-color': 'rgba(255, 113, 0,.3)',
     'fill-opacity': 0.75,
   },
 };

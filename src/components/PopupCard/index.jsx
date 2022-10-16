@@ -16,7 +16,7 @@ const PopupCard = ({ info }) => {
   const population = info.population;
   const acres = population * 0.000000856;
   const households = Math.round(population / 4);
-  const aqi = 48;
+  const aqi = 74;
 
   const [thumbnail, setThumbnail] = useState('');
   useEffect(() => {

@@ -29,12 +29,17 @@ const Alert = ({ title, level, description }) => {
   );
 };
 
-const DrawerContent = ({ county, state, population, aqi, alerts }) => {
+const DrawerContent = ({
+  county,
+  state,
+  population,
+  aqi,
+  alerts,
+  viewFires,
+  latitude,
+  longitude,
+}) => {
   const [imageSrc, setImageSrc] = useState('');
-
-  useEffect(() => {
-    getThumbnail(county).then(res => setImageSrc(res));
-  }, [county]);
 
   const country = 'United States';
 
@@ -44,16 +49,22 @@ const DrawerContent = ({ county, state, population, aqi, alerts }) => {
   const households = Math.round(population / 4);
   const acres = population * 0.000000856;
 
+  useEffect(() => {
+    getThumbnail(county).then(res => setImageSrc(res));
+  }, [county]);
+
   return (
     <div className={style.container}>
       <div className={style.top}>
-        <Tag src="pin.png" description="San Diego, CA, United States" />
+        <Tag src="pin.png" description={`${county}, ${state}, ${country}`} />
         <div className={style.row}>
           <Tag src="cal.png" description={date} />
           <Tag src="clock.png" description={time} />
         </div>
         <div className={style.right}>
-          <button className={style.viewFire}>View Active Fires &#8594;</button>
+          <button onClick={viewFires} className={style.viewFire}>
+            View Active Fires Near Me &#8594;
+          </button>
         </div>
       </div>
       <div className={style.imageContainer}>
