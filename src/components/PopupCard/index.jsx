@@ -28,14 +28,16 @@ const PopupCard = ({ info }) => {
   return (
     <div className={styles.container}>
       <div className={styles.headerImage}>
-        <img src={thumbnail} />
+        <div className={styles.imageContainer}>
+          <img src={thumbnail} alt="" />
+        </div>
       </div>
       <div className={styles.content}>
         <h1 className={styles.title}>{city}</h1>
         <h2 className={styles.subtitle}>CA, United States</h2>
         <span className={styles.info}>
           <BsPeopleFill size={12} />
-          {population.toLocaleString('en-US')} people
+          {population && population.toLocaleString('en-US')} people
         </span>
         <span className={styles.info}>
           <FaMountain size={12} />
@@ -45,6 +47,7 @@ const PopupCard = ({ info }) => {
           <SiWindicss size={12} />
           48 AQI &middot; Good{' '}
         </span>
+        <span className={styles.cta}>Click Region to Learn More</span>
         {/* BsPeopleFill */}
         {/* FaMountain */}
         {/* SiWindicss */}

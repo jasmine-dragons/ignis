@@ -13,51 +13,11 @@ import BorderStyles, {
 import PopupCard from '../PopupCard';
 
 const MapWrapper = () => {
-  // const MAPBOX_TOKEN1 =
-  //   'pk.eyJ1IjoibmlzaGFudGJhbGFqaSIsImEiOiJja2xkOGl3cjcxc21yMndtdmxtZWpxeGRuIn0.isOPq2BjpvuzwjZMXW1yWA';
-  // const [viewport, setViewport] = useState({
-  //   latitude: 37.7577,
-  //   longitude: -122.4376,
-  //   zoom: 8,
-  // });
-  // const mapRef = useRef();
-  // const handleViewportChange = useCallback(newViewport => setViewport(newViewport), []);
-
-  // // if you are happy with Geocoder default settings, you can just use handleViewportChange directly
-  // const handleGeocoderViewportChange = useCallback(newViewport => {
-  //   const geocoderDefaultOverrides = { transitionDuration: 1000 };
-
-  //   return handleViewportChange({
-  //     ...newViewport,
-  //     ...geocoderDefaultOverrides,
-  //   });
-  // }, []);
-
-  // return (
-  //   <div style={{ height: '100vh' }}>
-  //     <ReactMapGL
-  //       ref={mapRef}
-  //       {...viewport}
-  //       width="100%"
-  //       height="100%"
-  //       onViewportChange={handleViewportChange}
-  //       mapboxApiAccessToken={MAPBOX_TOKEN1}
-  //     >
-  //       {mapRef.current && (
-  //         <Geocoder
-  //           mapRef={mapRef}
-  //           onViewportChange={handleGeocoderViewportChange}
-  //           mapboxApiAccessToken={MAPBOX_TOKEN1}
-  //           position="top-left"
-  //         />
-  //       )}
-  //     </ReactMapGL>
-  //   </div>
-  // );
   const mapRef = useRef();
   const [hoverInfo, setHoverInfo] = useState(null);
   const selectedCounty = (hoverInfo && hoverInfo.countyName) || '';
   const handleViewportChange = useCallback(newViewport => setViewport(newViewport), []);
+
   const onClick = event => {
     const feature = event.features[0];
     if (feature) {
@@ -75,17 +35,18 @@ const MapWrapper = () => {
 
   const onHover = useCallback(event => {
     const county = event.features && event.features[0];
-    console.log(county);
-    setHoverInfo({
-      longitude: event.lngLat.lng,
-      latitude: event.lngLat.lat,
-      countyName: county && county.properties.COUNTY,
-      income: county && county.properties['median-income'],
-      population: county && county.properties.population,
-    });
+    if (county) {
+      setHoverInfo({
+        longitude: event.lngLat.lng,
+        latitude: event.lngLat.lat,
+        countyName: county.properties.COUNTY,
+        income: county.properties['median-income'],
+        ...county.properties,
+      });
+    }
   }, []);
 
-  const filter = useMemo(() => ['in', 'COUNTY', selectedCounty], [selectedCounty]);
+  const filter = useMemo(() => ['in', 'FIPS', hoverInfo && hoverInfo.FIPS], [hoverInfo]);
   return (
     <div>
       <ReactMapGL
@@ -103,20 +64,6 @@ const MapWrapper = () => {
         onViewportChange={handleViewportChange}
         onClick={onClick}
       >
-        {/* <GeocoderControl mapboxAccessToken={config.MAPBOX_TOKEN} position="top-left" /> */}
-        {/* {mapRef.current && (
-          <Geocoder
-            mapRef={mapRef}
-            onViewportChange={handleGeocoderViewportChange}
-            mapboxApiAccessToken={config.MAPBOX_TOKEN}
-            position="top-left"
-            onClear={noop}
-            onLoading={noop}
-            onResults={noop}
-            onResult={noop}
-            onEarror={noop}
-          />
-        )} */}
         <ControlLayer />
         <Source type="vector" url="mapbox://mapbox.82pkq93d">
           <Layer beforeId="waterway-label" {...countiesFillLayer} />
@@ -130,12 +77,11 @@ const MapWrapper = () => {
           <Popup
             longitude={hoverInfo.longitude}
             latitude={hoverInfo.latitude}
-            offset={[0, -10]}
+            offset={[0, -15]}
             closeButton={false}
             closeOnClick={false}
             className="county-info"
           >
-            {/* {selectedCounty} */}
             <PopupCard info={hoverInfo} />
           </Popup>
         )}
