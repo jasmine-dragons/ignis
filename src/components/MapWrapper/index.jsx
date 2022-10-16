@@ -1,7 +1,7 @@
 import { useRef, useState, useCallback, useMemo } from 'react';
 import ReactMapGL, { Marker, Layer, Popup, Source } from 'react-map-gl';
 import { config } from '../../lib/config';
-import { locations } from '../../lib/constants';
+import { locations, defaultDrawerProps } from '../../lib/constants';
 import ControlLayer from '../ControlLayer';
 import bbox from '@turf/bbox';
 import BorderStyles, {
@@ -11,11 +11,19 @@ import BorderStyles, {
   fillLayer,
 } from '../MapStyles/BorderStyles';
 import PopupCard from '../PopupCard';
-const fipsMap = require('fips-state-codes');
+
+import Drawer from 'react-modern-drawer';
+
+import 'react-modern-drawer/dist/index.css';
+import DrawerContent from '../DrawerContent';
+import { getStateLabel, getThumbnail } from '../../lib/utils';
 
 const MapWrapper = () => {
   const mapRef = useRef();
   const [hoverInfo, setHoverInfo] = useState(null);
+  const [showDrawer, setShowDrawer] = useState(false);
+  const [drawerProps, setDrawerProps] = useState(defaultDrawerProps);
+
   const handleViewportChange = useCallback(newViewport => setViewport(newViewport), []);
 
   const onClick = event => {
@@ -30,6 +38,16 @@ const MapWrapper = () => {
         ],
         { padding: 40, duration: 1000 }
       );
+
+      console.log({ feature });
+      setShowDrawer(true);
+      setDrawerProps({
+        county: feature.properties.COUNTY,
+        state: getStateLabel(feature),
+        population: feature.properties.population,
+        aqi: 48,
+        alerts: [],
+      });
     }
   };
 
@@ -42,7 +60,7 @@ const MapWrapper = () => {
         countyName: county.properties.COUNTY,
         income: county.properties['median-income'],
         ...county.properties,
-        stateName: fipsMap[county.properties.FIPS.toString().slice(0, 2)],
+        stateName: getStateLabel(county),
       });
     } else {
       setHoverInfo(null);
@@ -52,6 +70,16 @@ const MapWrapper = () => {
   const filter = useMemo(() => ['in', 'FIPS', (hoverInfo && hoverInfo.FIPS) || ''], [hoverInfo]);
   return (
     <div>
+      <Drawer
+        style={{
+          width: 472,
+        }}
+        open={showDrawer}
+        onClose={() => setShowDrawer(false)}
+        direction="left"
+      >
+        <DrawerContent {...drawerProps} />
+      </Drawer>
       <ReactMapGL
         ref={mapRef}
         initialViewState={{
