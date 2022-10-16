@@ -176,7 +176,7 @@ const LandingPage = () => {
       </div>
       <HeroNavbar />
       <main>
-        <div className={style.container}>Landing</div>;
+        <div className={style.container}>Landing</div>
       </main>
     </ParallaxProvider>
   );
