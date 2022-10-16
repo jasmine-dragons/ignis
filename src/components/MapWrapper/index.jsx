@@ -152,7 +152,13 @@ const MapWrapper = () => {
         )}
         {markers.map((marker, i) => (
           <Marker key={i} {...marker}>
-            <img src="logo.svg" />
+            <img
+              src="logo.png"
+              style={{
+                width: 22,
+                height: 40,
+              }}
+            />
           </Marker>
         ))}
       </ReactMapGL>
