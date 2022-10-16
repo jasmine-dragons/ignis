@@ -6,5 +6,64 @@
   gap: 3rem;
   justify-content: center;
   align-items: center;
-  background-color: #777;
+  background-color: rgb(29, 0, 0);
+}
+
+.landscape {
+  background: var(--c1);
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+
+  // shim to prevent gap of colour appearing at bottom
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: -9rem;
+    left: 0;
+    width: 100%;
+    height: 10rem;
+    background: var(--c10);
+  }
+
+  // positioning for each layer and parallax
+  &__layer {
+    // positioning
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  // svg wrapper
+  &__image {
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    left: 50%;
+    max-height: 100%;
+    max-width: 300%;
+    min-width: 100%;
+    position: absolute;
+    transform: translateX(-50%);
+    width: 2500px;
+
+    svg {
+      display: block;
+      height: auto;
+      max-width: 100%;
+    }
+
+    // ::after {
+    //   content: ' ';
+    //   display: block;
+    //   position: relative;
+    //   line-height: 100px;
+    //   width: 100px;
+    //   height: 1000px;
+    //   background: red;
+    //   z-index: 999;
+    // }
+  }
 }
