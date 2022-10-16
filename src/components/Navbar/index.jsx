@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import style from '../style.module.scss';
 
-import style from './style.module.scss';
 const Navbar = () => (
   <div className={style.navbar}>
     <div className={style.navbarLeft}>
