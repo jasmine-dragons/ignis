@@ -19,7 +19,7 @@ export const defaultDrawerProps = {
   thumbnail:
     'https://acmucsd.s3.us-west-1.amazonaws.com/portal/events/f718c917-9ec1-48b9-8f58-c0e6908afec2.png',
   population: 2000000,
-  aqi: 48,
+  aqi: 74,
   alerts: [
     {
       title: 'Fire Danger',

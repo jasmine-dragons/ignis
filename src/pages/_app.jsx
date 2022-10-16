@@ -7,7 +7,7 @@ export default function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>Ignis</title>
+        <title>ignis</title>
       </Head>
       <Component {...pageProps} />
     </>
