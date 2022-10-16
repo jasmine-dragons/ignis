@@ -9,7 +9,6 @@ const PopupCard = ({ info }) => {
   if (!info) {
     return null;
   }
-  console.log(info);
 
   const city = info.countyName;
   const income = info.income;

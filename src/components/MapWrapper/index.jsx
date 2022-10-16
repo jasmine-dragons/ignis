@@ -15,7 +15,6 @@ import PopupCard from '../PopupCard';
 const MapWrapper = () => {
   const mapRef = useRef();
   const [hoverInfo, setHoverInfo] = useState(null);
-  const selectedCounty = (hoverInfo && hoverInfo.countyName) || '';
   const handleViewportChange = useCallback(newViewport => setViewport(newViewport), []);
 
   const onClick = event => {
@@ -43,10 +42,12 @@ const MapWrapper = () => {
         income: county.properties['median-income'],
         ...county.properties,
       });
+    } else {
+      setHoverInfo(null);
     }
   }, []);
 
-  const filter = useMemo(() => ['in', 'FIPS', hoverInfo && hoverInfo.FIPS], [hoverInfo]);
+  const filter = useMemo(() => ['in', 'FIPS', (hoverInfo && hoverInfo.FIPS) || ''], [hoverInfo]);
   return (
     <div>
       <ReactMapGL
@@ -59,7 +60,7 @@ const MapWrapper = () => {
         projection="globe"
         mapboxAccessToken={config.MAPBOX_TOKEN}
         mapStyle={BorderStyles}
-        interactiveLayerIds={['counties', 'county-fill']}
+        interactiveLayerIds={['county-fill']}
         onMouseMove={onHover}
         onViewportChange={handleViewportChange}
         onClick={onClick}
@@ -73,7 +74,7 @@ const MapWrapper = () => {
           <Layer beforeId="waterway-label" {...fillLayer} />
           <Layer beforeId="waterway-label" {...lineLayer} />
         </Source>
-        {hoverInfo && selectedCounty && (
+        {hoverInfo && (
           <Popup
             longitude={hoverInfo.longitude}
             latitude={hoverInfo.latitude}

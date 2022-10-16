@@ -1,10 +1,5 @@
 import MAP_STYLE from './MapStyles.json';
 
-// const usCounties = {
-//   type: 'geojson',
-//   data: 'data/counties.geojson',
-// };
-
 export const fillLayer = {
   id: 'county-fill',
   'source-layer': 'original',

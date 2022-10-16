@@ -8,7 +8,7 @@ const HeroNavbar = () => (
       <div className={styles.navbarLeft}>
         <Link href="/">
           <a href="replace">
-            <Image src="/header.png" width={62} height={32} />
+            <Image src="/headerlight.png" width={62} height={32} />
           </a>
         </Link>
       </div>

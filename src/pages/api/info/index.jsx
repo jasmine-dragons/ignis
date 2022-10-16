@@ -3,12 +3,10 @@ import { config } from '../../../lib/config';
 
 export const classHandler = async (req, res) => {
   if (req.method === 'GET') {
-    console.log('hi');
     try {
       const lat = req.body.lat;
       const lng = req.body.lng;
       const AQI_TOKEN = config.AQI_TOKEN;
-      console.log(AQI_TOKEN);
       let url =
         'http://api.openweathermap.org/data/2.5/air_pollution?lat=' +
         lat +
