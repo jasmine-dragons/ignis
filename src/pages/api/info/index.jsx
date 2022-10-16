@@ -9,17 +9,26 @@ export const classHandler = async (req, res) => {
       const lng = req.body.lng;
       const AQI_TOKEN = config.AQI_TOKEN;
       console.log(AQI_TOKEN);
-      const url =
+      let url =
         'http://api.openweathermap.org/data/2.5/air_pollution?lat=' +
         lat +
         '&lon=' +
         lng +
         '&appid=' +
         AQI_TOKEN;
-      let response = await fetch(url);
-      response = await response.json();
+      const aqi_response = await (await fetch(url)).json();
 
-      return res.status(StatusCodes.ACCEPTED).json(response);
+      url =
+        'https://api.openweathermap.org/data/2.5/weather?lat=' +
+        lat +
+        '&lon=' +
+        lng +
+        '&appid=' +
+        AQI_TOKEN +
+        '&units=imperial';
+      const weather_response = await (await fetch(url)).json();
+
+      return res.status(StatusCodes.ACCEPTED).json({ info: { aqi_response, weather_response } });
     } catch (e) {
       console.log(e);
       return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(e);
